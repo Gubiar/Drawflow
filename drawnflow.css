@@ -1,0 +1,334 @@
+button {
+    cursor: pointer;
+}
+
+.drawflow,
+.drawflow .parent-node {
+    position: relative;
+}
+.parent-drawflow {
+    display: flex;
+    overflow: hidden;
+    touch-action: none;
+    outline: 0;
+}
+.drawflow {
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+.drawflow .drawflow-node {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    height: auto;
+    border-radius: 4px;
+    border: 0.5px solid #cacaca;
+    color: #1b1e21;
+    z-index: 2;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    padding: 0px;
+}
+
+.drawflow .drawflow-node.selected {
+    background: #FFF;
+    box-shadow: 2px 2px 5px 2px rgba(55, 146, 237, 0.3);
+}
+.drawflow .drawflow-node:hover {
+    cursor: move;
+}
+.drawflow .drawflow-node .inputs,
+.drawflow .drawflow-node .outputs {
+    width: 0;
+}
+.drawflow .drawflow-node .drawflow_content_node {
+    display: block;
+    margin: 1rem;
+}
+.drawflow .drawflow-node .input,
+.drawflow .drawflow-node .output {
+    border-radius: 50%;
+    cursor: crosshair;
+    z-index: 1;
+}
+
+.drawflow svg {
+    z-index: 0;
+    position: absolute;
+    overflow: visible !important;
+}
+.drawflow .connection {
+    position: absolute;
+    pointer-events: none;
+}
+.drawflow .connection .main-path {
+    fill: none;
+    stroke-width: 5px;
+    stroke: #4682b4;
+    pointer-events: all;
+}
+.drawflow .connection .main-path:hover {
+    stroke: #1266ab;
+    cursor: pointer;
+}
+.drawflow .connection .main-path.selected {
+    stroke: #43b993;
+}
+.drawflow .connection .point {
+    cursor: move;
+    stroke: #000;
+    stroke-width: 2;
+    fill: #fff;
+    pointer-events: all;
+}
+.drawflow .connection .point.selected,
+.drawflow .connection .point:hover {
+    fill: #1266ab;
+}
+.drawflow .main-path {
+    fill: none;
+    stroke-width: 5px;
+    stroke: #4682b4;
+}
+.drawflow-delete {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: #000;
+    color: #fff;
+    z-index: 4;
+    border: 2px solid #fff;
+    line-height: 30px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 50%;
+    font-family: monospace;
+    cursor: pointer;
+}
+.drawflow > .drawflow-delete {
+    margin-left: -15px;
+    margin-top: 15px;
+}
+.parent-node .drawflow-delete {
+    right: -15px;
+    top: -15px;
+}
+
+.drawflow-node .inputs, .drawflow-node .outputs{
+    display: flex !important;
+    width: 100% !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.drawflow .drawflow-node .input, .drawflow .drawflow-node .output {
+    position: inherit !important;
+    left: inherit !important;
+    right: inherit !important;
+    top: inherit !important;
+    bottom: inherit !important;
+}
+
+.drawflow .drawflow-node .input{
+    margin: -10px 5px 0px 5px;
+}
+
+.drawflow .drawflow-node .output{
+    margin: 0px 5px -10px 5px;
+}
+
+
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+
+    display: flex;
+}
+
+.hidden{
+  display: none !important;
+}
+
+.btn_actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.btn_actions > * {
+    margin-right: 1rem;
+}
+
+.btn_actions > *:last-child {
+    margin-right: 0px;
+}
+
+#drawflow {
+    position: relative;
+    width: calc(100% - 300px);
+    height: 100%;
+    background: #f1f2f3;
+    background-size: 25px 25px;
+    background-image: linear-gradient(to right, #c9c9c9 1px, transparent 1px), linear-gradient(to bottom, #c9c9c9 1px, transparent 1px);
+}
+
+.drawflow .connection .main-path {
+    stroke: #4ea9ff;
+    stroke-width: 3px;
+}
+
+.drawflow .drawflow-node .input,
+.drawflow .drawflow-node .output {
+    height: 15px;
+    width: 15px;
+    border: 1px solid #dfcaff;
+    background: #FFF;
+}
+
+.drawflow .drawflow-node .input:hover,
+.drawflow .drawflow-node .output:hover {
+    background: #4ea9ff;
+    border: 1px solid #4ea9ff;
+}
+
+
+.tab{
+  width: 300px;
+  overflow-y: scroll;
+  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  background-color: #fefefe;
+}
+
+.tab_button_container{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  border-bottom: 2px solid #4ea9ff;
+  background-color: #FFF;
+}
+
+.tab_button{
+  background-color: #FFF;
+  border: 0px;
+  
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px 6px 0px 0px;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.tab_button.selected{
+  background-color: #4ea9ff;
+  color: #FFF;
+}
+
+.tab_button:hover{
+  background-color: #d8d8d8;
+}
+
+.tab_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.drag-drawflow{
+  padding: 1rem;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  cursor: grab;
+}
+
+/* Componentes */
+
+.comentario {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comentario textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+
+.btn_actions button {
+    border: none;
+    background: none;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 0.3rem;
+
+}
+
+
+.floating-div {
+    width: 200px;
+    height: auto;
+
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem;
+    z-index: 20;
+
+    border-radius: 4px;
+    border: 0.5px solid #cacaca;
+    color: #1b1e21;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+}
+
+.floating-div button {
+    background: #dc3545;
+    color: #FFF;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.floating-div p {
+    color: #9e9e9e;
+    font-size: 11px;
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 0px;
+} 
+
+.floating-div-child {
+    position: absolute;
+    right: -250px;
+}
